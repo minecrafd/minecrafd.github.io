@@ -1,0 +1,365 @@
+/* ==========================================================================
+   ARCHIVE
+   ========================================================================== */
+
+.archive {
+  margin-bottom: 2em;
+
+  @include breakpoint($medium) {
+    @include span(12 of 12);
+  }
+
+  @include breakpoint($large) {
+    @include span(10 of 12 last);
+    @include prefix(0.5 of 12);
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+
+      img {
+        box-shadow: 0 0 10px rgba(#000, 0.25);
+      }
+    }
+  }
+}
+
+.archive__subtitle {
+  margin: 1.414em 0 0;
+  padding-bottom: 0.5em;
+  font-size: $type-size-5;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-border-color);
+
+  + .list__item .archive__item-title {
+    margin-top: 0.1em;
+  }
+}
+
+.archive__item-title {
+  margin-bottom: 0.25em;
+  font-family: $sans-serif-narrow;
+
+  a + a {
+    opacity: 0.5;
+  }
+}
+
+/* remove border*/
+.page__content {
+
+  .archive__item-title {
+    margin-top: 0.1em;
+    border-bottom: none;
+  }
+}
+
+.archive__item-excerpt {
+  margin-top: 0;
+  font-size: $type-size-6;
+
+  & + p {
+    text-indent: 0;
+  }
+}
+
+.archive__item-teaser {
+  border-radius: $border-radius;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.archive__item:hover {
+  .archive__item-teaser {
+    box-shadow: 0 0 10px rgba(#000, 0.25);
+  }
+
+  .archive__item-title {
+    text-decoration: underline;
+  }
+}
+
+
+/*
+   List view
+   ========================================================================== */
+
+.list__item {
+  @include breakpoint($medium) {
+    padding-right: $right-sidebar-width-narrow;
+  }
+
+  @include breakpoint($large) {
+    padding-right: $right-sidebar-width;
+  }
+
+  @include breakpoint($x-large) {
+    padding-right: $right-sidebar-width-wide;
+  }
+
+  .page__meta {
+    margin: 0 0 4px;
+  }
+}
+
+
+/*
+   Grid view
+   ========================================================================== */
+
+.grid__item {
+  margin-bottom: 2em;
+
+  .page__meta {
+    margin: 0 0 4px;
+  }
+
+  .archive__item-title {
+    margin-top: 0.1em;
+    font-size: $type-size-5;
+  }
+
+  .archive__item-excerpt {
+    display: none;
+  }
+
+  @include breakpoint($small) {
+    @include gallery(5 of 10);
+    .archive__item-teaser {
+      max-height: 200px;
+    }
+  }
+
+  @include breakpoint($medium) {
+    margin-left: 0; /* reset before mixin does its thing*/
+    margin-right: 0; /* reset before mixin does its thing*/
+    @include gallery(2.5 of 10);
+
+    .archive__item-teaser {
+      max-height: 120px;
+    }
+
+    .archive__item-excerpt {
+      display: block;
+      font-size: $type-size-6;
+    }
+  }
+}
+
+
+/*
+   Features
+   ========================================================================== */
+
+.feature__wrapper {
+  @include clearfix();
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.feature__item {
+  margin-bottom: 2em;
+  font-size: 1.25rem;
+
+  @include breakpoint($small) {
+    margin-bottom: 0;
+    @include gallery(4 of 12);
+
+    .feature__item-teaser {
+      max-height: 200px;
+      overflow: hidden;
+    }
+  }
+
+  &--left {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      .archive__item-teaser {
+        @include span(5 of 12);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--right {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: right;
+
+      .archive__item-teaser {
+        @include span(5 of 12 rtl);
+      }
+
+      .archive__item-body {
+        @include span(7 of 12 last rtl);
+        @include prefix(0.5 of 12);
+        @include suffix(1 of 12);
+      }
+    }
+  }
+
+  &--center {
+    @include full();
+    font-size: 1.25rem;
+
+    .archive__item-teaser {
+      margin-bottom: 2em;
+    }
+
+    @include breakpoint($small) {
+      text-align: center;
+
+      .archive__item-teaser {
+        margin: 0 auto;
+        width: span(5 of 12);
+      }
+
+      .archive__item-body {
+        margin: 0 auto;
+        width: span(7 of 12);
+      }
+    }
+  }
+}
+
+/* 作者显示样式 */
+/* 作者显示样式 */
+.authors {
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 0.3em;
+  font-weight: normal;
+}
+
+/* 高亮特定作者名字 */
+.highlight-author {
+  color: #666;
+  font-weight: bold;
+  font-style: normal;
+  background-color: #f8f9fa;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+/* 可选：鼠标悬停效果 */
+.highlight-author:hover {
+  background-color: #e9ecef;
+}
+
+.publication-layout {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 1.5em;
+}
+
+/* Publication图片样式 - 固定占位 */
+.publication-image {
+  flex-shrink: 0;
+  width: 240px;
+  height: 160px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.publication-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+/* Publication内容区域 - 固定左对齐 */
+.publication-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* 确保所有文字元素左对齐 */
+.publication-content * {
+  text-align: left;
+  width: 100%;
+}
+
+/* 调整标题字体大小和去除上方空白 */
+.publication-content .archive__item-title {
+  font-size: 1.1em;
+  margin-top: 0 !important;
+  margin-bottom: 0.4em;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* 去除第一个元素的上边距 */
+.publication-content > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* 调整venue和日期文字大小 */
+.publication-content p {
+  font-size: 0.85em;
+  margin-bottom: 0.4em;
+  text-align: left;
+  margin-left: 0;
+}
+
+/* 调整excerpt文字大小 */
+.publication-content .archive__item-excerpt {
+  font-size: 0.8em;
+  text-align: left;
+}
+
+/* 确保链接也左对齐 */
+.publication-content a {
+  text-align: left;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .publication-layout {
+    flex-direction: column;
+  }
+  
+  .publication-image {
+    width: 100%;
+    max-width: 240px;
+    height: 160px;
+    align-self: flex-start;
+  }
+  
+  .publication-content .archive__item-title {
+    font-size: 1.05em;
+  }
+}
